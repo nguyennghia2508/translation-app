@@ -59,6 +59,12 @@ export async function translateText(
                   - If preceded by a kinship term, translate the title as "anh", "chị", "em", "cô", "dì", "chú", "bác", "ông", "bà" (e.g., "Mr. Tuan" → "anh Tuấn", "Mrs. Hoa" → "bà Hoa", "Uncle Nam" → "chú Nam")
                 * Words that are not capitalized, not in name context, or not Vietnamese names → leave unchanged
                 * Non-Vietnamese names stay unchanged
+              - Kinship term translation:
+                * If a kinship/family term + name appears in the sentence, and it serves as a title (e.g., "chú Nghĩa"), it must be translated as Mr./Mrs./Ms. + Name.
+                * If the kinship term stands alone, use its appropriate English equivalent (e.g., "ông" → "grandfather"), but only when used as a true noun, not a title.
+              - Capitalization at sentence or paragraph start:
+                * Any word that appears at the start of a sentence or paragraph must begin with a capital letter, even if it’s not a name.
+                * This applies regardless of whether it’s a common noun, kinship term, or unknown name.
               - Numbers (keep exactly as is)
               - Dates (keep format exactly as is, e.g., 25/08/2001 stays 25/08/2001)
               - Special characters
