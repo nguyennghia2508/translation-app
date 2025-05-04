@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { LuCopy } from "react-icons/lu";
 import { IoSwapVerticalSharp } from "react-icons/io5";
 type Language = "vi" | "en";
@@ -18,6 +18,8 @@ export default function TranslationPanel() {
     const [toLanguage, setToLanguage] = useState<Language>("en");
     const [isLoading, setIsLoading] = useState(false);
     const [copied, setCopied] = useState(false);
+
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const handleFromLanguageChange = (lang: Language) => {
         if (lang === toLanguage) {
@@ -89,6 +91,18 @@ export default function TranslationPanel() {
         return code === "vi" ? "Vietnamese" : "English";
     };
 
+    const adjustHeight = () => {
+        const textarea = textareaRef.current;
+        if (textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        }
+    };
+
+    useEffect(() => {
+        adjustHeight();
+    }, [inputText]);
+
     return (
         <div className="grid gap-6 md:grid-cols-2">
             <div className="flex flex-col space-y-2">
@@ -116,10 +130,11 @@ export default function TranslationPanel() {
                 </div>
                 <div className="relative">
                     <textarea
+                        ref={textareaRef}
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}
                         placeholder={`Type in ${getLanguageName(fromLanguage)}...`}
-                        className="min-h-[200px] w-full rounded-lg border border-input bg-background p-4 text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring/50"
+                        className="min-h-[200px] w-full rounded-lg border border-input bg-background p-4 text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring/50 overflow-hidden resize-none"
                     ></textarea>
                 </div>
             </div>
@@ -155,7 +170,7 @@ export default function TranslationPanel() {
                         <LuCopy size={18} />
                     </button>
                 </div>
-                <div className="relative min-h-[200px] w-full rounded-lg border border-input bg-background p-4 text-foreground focus-within:ring-1 focus-within:ring-ring/50">
+                <div className="relative min-h-[200px] w-full rounded-lg wrap-break-word border border-input bg-background p-4 text-foreground focus-within:ring-1 focus-within:ring-ring/50">
                     {result ? (
                         <div className="whitespace-pre-wrap">{result.text}</div>
                     ) : (
