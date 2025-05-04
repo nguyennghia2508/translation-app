@@ -47,14 +47,15 @@ export async function translateText(
               - Proper nouns handling (only apply if all these conditions are met):
                 * The word is capitalized  
                 * The word appears in a known Vietnamese names list
+                * The word is used in a name-relevant context, including:
+                  - After phrases like: "tôi tên là", "tên tôi là", "đây là", "gặp", "gọi là", etc.
+                  - Or after a Vietnamese kinship/family term, such as: "anh", "chị", "em", "cô", "dì", "chú", "bác", "ông", "bà"
                 * It is used in a name-relevant context (e.g., after “my name is”, “tôi tên là”, “gặp anh”, OR after family titles like “chú”, “bác”, “cô”, etc.)
-                * It is used in a name-relevant context (e.g., after “my name is”, “tôi tên là”, “gặp anh”, etc.)
-                * When translating FROM Vietnamese to another language:
-                  If it includes a Vietnamese family title + name (e.g., "chú Nam", "cô Hạnh"), translate the title (e.g., "chú" → "Uncle") and remove diacritics from the name ("Nam" stays "Nam", "Nguyễn" → "Nguyen")
-                  So: "chú Nam" → "Uncle Nam", "bác Nguyễn Văn A" → "Uncle Nguyen Van A"
-                * When translating TO Vietnamese:
-                  If it is a family title + Vietnamese name (e.g., "Uncle Nam"), then translate title to Vietnamese ("Uncle" → "chú") and add Vietnamese diacritics to the name if recognized as Vietnamese
-                  So: "Uncle Nguyen Van A" → "chú Nguyễn Văn A"
+                * If translating FROM Vietnamese:
+                  - Remove diacritics from Vietnamese names (e.g., "Nguyễn Văn A" → "Nguyen Van A")
+                  - If preceded by a kinship term, translate the title as Mr., Mrs., Ms., etc. (e.g., "anh Tuấn" → "Mr. Tuan", "bà Hoa" → "Mrs. Hoa")
+                * If translating TO Vietnamese:
+                  - Add Vietnamese diacritics to Vietnamese names (e.g., "Nguyen Van A" → "Nguyễn Văn A")
                 * Words that are not capitalized, not in name context, or not Vietnamese names → leave unchanged
                 * Non-Vietnamese names stay unchanged
               - Numbers (keep exactly as is)
