@@ -18,7 +18,7 @@ const getInitialTheme = (): Theme => {
       ? JSON.parse(localStorage.getItem('theme-storage')!).state.theme
       : null;
     return fromZustand || localStorage.getItem('theme') as Theme || 'light';
-  } catch (e) {
+  } catch {
     return 'light';
   }
 };

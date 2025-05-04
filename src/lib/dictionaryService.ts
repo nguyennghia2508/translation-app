@@ -10,10 +10,25 @@ export interface DictionaryRequest {
 }
 
 export interface DictionaryResult {
-  dictionaryData: any;
+  dictionaryData: DictionaryData | null;
   success: boolean;
   savedToDb: boolean;
   error?: string;
+}
+
+export interface DictionaryData {
+  [key: string]: any;
+  word: string;
+  phonetics: string;
+  meanings: Meaning[];
+  translation: string;
+  sourceLanguage: string;
+}
+
+export interface Meaning {
+  partOfSpeech: string;
+  definitions: string[];
+  examples?: string[];
 }
 
 // Simple language detection (can be improved)
@@ -119,7 +134,7 @@ export async function lookupWord(
             data: {
               userId,
               word,
-              result: sanitizedData as any,
+              result: sanitizedData as DictionaryData,
               sourceLanguage,
               targetLanguage,
             },
