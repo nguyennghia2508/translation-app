@@ -53,9 +53,10 @@ export async function translateText(
                 * It is used in a name-relevant context (e.g., after “my name is”, “tôi tên là”, “gặp anh”, OR after family titles like “chú”, “bác”, “cô”, etc.)
                 * If translating FROM Vietnamese:
                   - Remove diacritics from Vietnamese names (e.g., "Nguyễn Văn A" → "Nguyen Van A")
-                  - If preceded by a kinship term, translate the title as Mr., Mrs., Ms., etc. (e.g., "anh Tuấn" → "Mr. Tuan", "bà Hoa" → "Mrs. Hoa")
+                  - If preceded by a kinship term, translate the title as Mr., Mrs., Ms., etc. (e.g., "anh Tuấn" → "Mr. Tuan", "bà Hoa" → "Mrs. Hoa", "chú Nam" → "Uncle Nam")
                 * If translating TO Vietnamese:
                   - Add Vietnamese diacritics to Vietnamese names (e.g., "Nguyen Van A" → "Nguyễn Văn A")
+                  - If preceded by a kinship term, translate the title as "anh", "chị", "em", "cô", "dì", "chú", "bác", "ông", "bà" (e.g., "Mr. Tuan" → "anh Tuấn", "Mrs. Hoa" → "bà Hoa", "Uncle Nam" → "chú Nam")
                 * Words that are not capitalized, not in name context, or not Vietnamese names → leave unchanged
                 * Non-Vietnamese names stay unchanged
               - Numbers (keep exactly as is)
