@@ -14,7 +14,7 @@ A translation app that converts text between Vietnamese and English using AI. It
 ## Tech Stack
 
 - **Frontend**: Next.js, TypeScript, Tailwind CSS
-- **API Integration**: Gemeni 2.0 Flash
+- **API Integration**: Gemini 2.0 Flash
 - **Styling**: TailwindCSS with dark mode support
 - **Design System**: Custom components
 - **State Management**: React useState hooks
